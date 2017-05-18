@@ -2,7 +2,7 @@
 #coding:utf-8
 #data:20170502
 #Author:1975
-
+#程序调用主体
 import img_downurl,htmlparser,url_lists,os
 
 class SpiderMain(object):
@@ -10,7 +10,7 @@ class SpiderMain(object):
         self.dirs = url_lists.Furl()
         self.urls = htmlparser.Shtml()
         self.imgs = img_downurl.Img_down()
-
+    #对获取的分类进行二次过滤
     def dir_url(self,root_url):
         dir_lists = craw.dirs.class_url(root_url)
 
@@ -21,7 +21,7 @@ class SpiderMain(object):
             else:
                 dir_dict[dl['href']] = dl.get_text()
         return dir_dict
-
+    #传入所有的分类URL，再分别调用函数获取分类下的详细URL、页码，再对单个URL发起http请求获取需要的数据
     def pages_url(self,dir_url):
         urls = []
         for url in dir_url:
@@ -51,6 +51,7 @@ if __name__ == '__main__':
     root = 'https://lifanmoe.com'
     craw = SpiderMain()
     dlist = craw.dir_url(root)
+    #建立大类目录
     for dirs in dlist:
         c_path = path_pwd+'/'+dlist[dirs]
         if os.path.exists(c_path) or os.path.isdir(c_path):

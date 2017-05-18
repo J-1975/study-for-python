@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 #coding:utf-8
 #data:20170501
+#Author:1975
 
 from bs4 import BeautifulSoup
 import requests,re,json,sys
@@ -11,7 +12,7 @@ sys.setdefaultencoding('utf-8')
 class Img_down(object):
     def __init__(self):
         pass
-
+    #对每个详细的URL中的图片进行抓取并保存到本地
     def detail_url(self,url):
         if url is None:
             return
@@ -30,7 +31,7 @@ class Img_down(object):
                 with open(i.split('/')[-1],'wb') as name:
                     name.write(img_content.content)
                 name.close()
-    
+    #获取详细URL中的下载连接
     def download_url(self,pid):
         if pid is None:
             return
