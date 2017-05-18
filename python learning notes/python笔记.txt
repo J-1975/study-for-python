@@ -1,0 +1,193 @@
+安装setuptools:
+下载ez_setup.py（https://pypi.python.org/pypi/setuptools#windows-simplified）
+运行如下命令:
+python  ez_setup.py  build
+python  ez_setup.py  install
+
+安装Pip:
+(a)下载地址http://pypi.python.org/packages/source/p/pip/pip-1.0.tar.gz
+(b) 依次运行如下命令
+python  setup.py  build
+python  setup.py  install
+
+pip  install 模块名
+
+------------------------------
+python代码编译：
+① 脚本文件方式，生成.pyc文件
+import py_compile
+py_compile.compile('add.py')
+
+②python命令形式，生成.pyo文件
+python -O -m py_compile add.py
+
+-------------------------------
+
+python异常：
+SyntaxError: invalid syntax 	#泛指语法错误，无效语法
+NameError: name 'x' is not defined 	#名字错误，x没有定义
+IndentationError:expected an indented block		#99%都是代码缩进问题
+IndentationError: unindent does not match any outer indentation level		#代码缩进问题，在缩进中采用了空格缩进+tab键缩进；可以notepad++打开，在视图-显示符号-显示空格与制表符
+-------------------------------
+
+运算：
+3/2=1
+3.0/2=1.5
+3//2=1	#整除
+17%6=5	#求余运算
+3**3=27	#冥运算
+
+-------------------------------
+
+字符串操作：
+x = '1234567'
+x[::2] = '1357'		#第一段起始位置，第二段结束位置，第三段间隔数(默认为1)
+
+x = '123'
+x*3 = '123123123'	#'x'是一个变量，x*3表示重复字符段'123'三次
+
+x = '123qwe'
+'q' in x 返回true	#判断一个字符在一串字符串中是否存在
+
+cmp(value1,value2)	#比较两个字符串，大于返回1，小于返回-1，等于返回0
+
+-------------------------------
+
+列表(list)操作：
+
+testlist = [1,'x','233',123]
+testlist.remove(2)
+testlist.remove(testlist[3])		#是方法
+del(testlist[2])		#del是系统函数
+testlist.append(111)
+
+字典：
+dic = {'name':'bob','age':12,'sex':'man','phone':123456}
+dic.pop('sex')		#弹出值，弹出后字典里就没了
+del dic['phone']	#删除
+dic.clear()			#清空字典里所有元素
+del dic				#删除dic字典
+dic.keys()			#字典列表
+dic.values()		#字典值
+
+-------------------------------
+
+d = [1:111,2:222,3:333,5:555,7:777]
+for k,v in d.items():
+    print k,v
+
+-------------------------------
+help(函数名)	help(len)
+help(类别.函数名)	help(str.replace)
+
+内置函数：
+callable()		#判断函数是否是已定义函数
+isinstance()	#判断数据类型，list or int or tuple
+cmp()			#比较两个字符，a=b ->0; a<b -> -1; a>b -> 1
+range()			#生成一个序列
+xrange()		#
+type()、int()、float()、long()、
+capitalize()	#字符串首字母大写
+
+filter()函数
+def f(x):
+    x > 5:
+        return Ture
+l = range(10)
+filter(f,l)
+输出：[6,7,8,9,10]
+
+zip()、map()函数
+name=['qwe','asd','zxc']
+age=[12,34]
+tel=['123','120','130']
+输出：>>> zip(name,age,tel)
+[('qwe', 12, '123'), ('asd', 34, '120')]
+输出：>>> map(None,name,age,tel)
+[('qwe', 12, '123'), ('asd', 34, '120'), ('zxc', None, '130')]
+map(函数,name,age,tel)
+
+reduce()函数
+l = range(1,101)
+def f(x,y):
+    return x+y
+reduce(f,l)
+也可以这样
+reduce(lambda x,y:x+y,l)
+输出均为5050(1+2+3...+101)
+-------------------------------
+
+python模块
+
+if __namne__ = '__main__':		#判断当前程序是否是被当前程序所调用，是则执行一些代码，不是则不执行
+    pass
+
+python查找模块顺序，当前目录->lib->site-packages
+
+1、模块是一个可以导入的python脚本文件
+2、包是一堆按目录组织的模块和子包，目录下的__init__.py文件存放了包的信息
+3、可以用import,imort as,form import等语句导入模块和包
+import sys
+sys.argv
+
+import sys as s
+s.argv
+
+from cal import jia
+jia(x,y)
+
+-------------------------------
+
+python中break，continue只能用于for，while这样的循环中，不然会报错。
+SyntaxError: 'break' outside loop
+
+-------------------------------
+
+异常处理机制，一般使用try: except:来捕获异常信息
+
+tyr:
+    open("test.txt")
+    print 123qwe
+except IOError,ms:
+    print "打开文件错误"
+except: NameError,ms:
+    print "变量名错误"
+#当异常处理完之后，如果想执行一些必须执行的代码，可使用finally:
+finally:
+    print "需要执行的代码放在finally中"
+
+#自定义错误信息用raise
+if filename == "23333xo"
+    raise TypeError("nothing!")
+
+-------------------------------
+报错信息
+UnicodeEncodeError: 'ascii' codec can't encode characters in position 0-3: ordinal not in range(128)
+解决方法
+方法一：
+reload(sys)
+sys.setdefaultencoding('utf-8')
+
+方法二：
+with codecs.open('download.txt','w',encoding='utf-8') as file_:
+
+-------------------------------
+测试程序执行时间(默认执行1000次的时间，可用number=n来指定执行次数)：
+from timeit import timeit as timeit
+print timeit('filter(lambda x: x >= 0, data)','from __main__ import data')
+
+求出现频率次数最高的前几位。
+from collections import Counter
+data = [randint(0,20) for _ in xrange(30)]
+c2 = Counter(data)
+print c2.most_common(3) #取出出现频率最高的三个元素
+
+对一些单词出现频率进行统计
+c3 = Counter(re.split('\W',string))
+c3.most_common(7)
+-------------------------------
+-------------------------------
+-------------------------------
+-------------------------------
+-------------------------------
+-------------------------------
