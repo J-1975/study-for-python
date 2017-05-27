@@ -1,7 +1,5 @@
 **python learning record**   
-ÖÐ¹È½ÌÓý-PythonÊÓÆµ½Ì³Ì
+ä¸­è°·æ•™è‚²-Pythonè§†é¢‘æ•™ç¨‹
 
-Python¸ß¼¶±à³Ì¼¼ÇÉÊµÕ½   
-URL£ºhttp://coding.imooc.com/class/62.html
-
-¿´¹ýµÄÊé¼®£ºpythonºÚÃ±×Ó¡¢pythonºËÐÄ±à³Ì(µÚ3°æ)[²¿·ÖÔÄ¶Á]
+Pythoné«˜çº§ç¼–ç¨‹æŠ€å·§å®žæˆ˜   
+URLï¼šhttp://coding.imooc.com/class/62.html
